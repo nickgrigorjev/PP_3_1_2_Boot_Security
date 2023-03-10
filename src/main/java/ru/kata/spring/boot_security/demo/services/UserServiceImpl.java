@@ -1,5 +1,7 @@
 package ru.kata.spring.boot_security.demo.services;
 
+import org.springframework.data.annotation.Transient;
+import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.models.User;
 import ru.kata.spring.boot_security.demo.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +28,22 @@ public class UserServiceImpl implements UserService {
         Optional<User> foundUser = usersRepository.findById(id);
         return foundUser.orElse(null);
     }
+
+    @Transient
     public void create(User user){
         usersRepository.save(user);
     }
+
     public void update(User user){
         usersRepository.save(user);
     }
+
     public void delete(int id) {
         usersRepository.deleteById(id);
+    }
+
+    public User findByUserName(String name) {
+        return usersRepository.findByUsername(name).get();
     }
 
 }
