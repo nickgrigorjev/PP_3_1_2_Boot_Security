@@ -10,7 +10,7 @@ import java.security.Principal;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/user")
 public class UsersController {
 
     private final UserService userService;
@@ -19,7 +19,7 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @GetMapping("/user")
+    @GetMapping
     public String getUserPage(Principal principal, Model model) {
         String user = (principal.getName());
         model.addAttribute("user", user);

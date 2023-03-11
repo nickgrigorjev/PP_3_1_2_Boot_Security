@@ -29,7 +29,7 @@ public class RegistrationService {
 
     public void register(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        List<Role> roles = user.getRoles();
+        Set<Role> roles = user.getRoles();
         roles.add(new Role("ROLE_USER"));
         user.setRoles(roles);
         usersRepository.save(user);

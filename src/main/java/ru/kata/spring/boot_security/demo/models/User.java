@@ -40,12 +40,12 @@ public class User implements UserDetails {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name= "role_id")}
     )
-    private List<Role> roles = new ArrayList<>();
+    private Set<Role> roles;
 
     public User() {
     }
 
-    public User(String name, String surname, int age, String username, String password, List<Role> roles) {
+    public User(String name, String surname, int age, String username, String password, Set<Role> roles) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -54,11 +54,11 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
